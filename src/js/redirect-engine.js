@@ -216,6 +216,7 @@ class RedirectEngine {
             js: entry.toContent(),
             world: entry.world,
             dependencies: entry.dependencies.slice(),
+            priority: entry.priority ?? 0,
         };
     }
 
