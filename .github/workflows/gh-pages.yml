@@ -58,10 +58,16 @@ jobs:
           EOF
 
       - name: Prepare for deployment
+        env:
+          CRX3_ID: ${{ vars.CRX3_ID }}
+          PAGES_URL: ${{ vars.PAGES_URL }}
         run: |
           mkdir -p _site
           cp .github/index.html _site/index.html
-          sed -e 's/__CRX3_ID__/${{ vars.CRX3_ID }}/g' -e 's/__PAGES_URL__/${{ vars.PAGES_URL }}/g' -e 's/__CRX3_VERSION__/${{ env.TAG }}/g' -i _site/index.html
+          # Passed through the environment and delimited with | rather than /,
+          # because a project-page PAGES_URL contains a slash (owner.github.io/repo)
+          # and would otherwise terminate the s/// expression.
+          sed -e "s|__CRX3_ID__|$CRX3_ID|g" -e "s|__PAGES_URL__|$PAGES_URL|g" -e "s|__CRX3_VERSION__|$TAG|g" -i _site/index.html
           mv "${{ env.CRX_FILENAME }}" update.xml _site/
 
       - name: Delete old release and tag
