@@ -61,6 +61,12 @@ To do this on Linux:
 1. Create `/etc/opt/chrome/policies/managed/policy.json` or `/etc/chromium/policies/managed/policy.json`. (or some other variant depending on your chrome install)
 2. Write `{ "ExtensionInstallForcelist": ["blockddmmcjpfkbhanlgegpmjpfpfjka;https://ublock.r58playz.dev/update.xml"] }` into the file.
 
+On RPM-based systems, and on rpm-ostree systems such as Fedora Silverblue and
+secureblue where editing `/etc` by hand does not survive an image rebuild, the
+policy can be installed as a package instead. See [packaging/README.md][Packaging],
+which also covers self-hosting the CRX and `update.xml` on GitHub Pages so the
+install points at your own build rather than someone else's.
+
 Local build:
 1. Clone and `make`
 2. Load unpacked `dist/build/uBlock0.chromium` in the extensions UI
@@ -116,6 +122,7 @@ If you ever want to contribute something, think about the people working hard to
 [Mozilla]: https://addons.mozilla.org/addon/ublock-origin/
 [Crowdin]: https://crowdin.com/project/ublock
 [Chrome]: https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm
+[Packaging]: ./packaging/README.md
 [Reddit]: https://www.reddit.com/r/uBlockOrigin/
 [Theft]: https://x.com/LeaVerou/status/518154828166725632
 [Opera]: https://addons.opera.com/extensions/details/ublock/
