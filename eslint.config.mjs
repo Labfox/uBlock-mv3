@@ -18,6 +18,7 @@ export default [ includeIgnoreFile(gitignorePath), {
     languageOptions: {
         globals: {
             ...globals.browser,
+            ...globals.webextensions,
             vAPI: "readonly",
         },
         sourceType: "module",
@@ -40,6 +41,14 @@ export default [ includeIgnoreFile(gitignorePath), {
         "no-empty": "off",
         "sort-imports": "error",
         "strict": "error",
+    },
+}, {
+    files: ["platform/npm/tests/**/*.js"],
+    languageOptions: {
+        globals: {
+            ...globals.mocha,
+            ...globals.node,
+        },
     },
 }, {
     files: ["**/*.json"],

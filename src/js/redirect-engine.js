@@ -19,9 +19,10 @@
     Home: https://github.com/gorhill/uBlock
 */
 
+import * as scriptletsModule from './resources/scriptlets.js';
+
 import { LineIterator, orphanizeString } from './text-utils.js';
 import redirectableResources from './redirect-resources.js';
-import * as scriptletsModule from "./resources/scriptlets.js";
 
 /******************************************************************************/
 

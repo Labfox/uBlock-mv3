@@ -220,7 +220,7 @@ vAPI.scriptletsInjector = (( ) => {
             const { hostname } = location;
             if ( hostname !== '' && details.hostname !== hostname ) { return; }
             try {
-				const scriptlets = function(){};
+                void function(){};
                 self[Symbol.for("uBO_scriptletsInjected")] = details.filters;
             } catch {
             }

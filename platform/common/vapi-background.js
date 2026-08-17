@@ -769,6 +769,13 @@ if ( webext.browserAction instanceof Object ) {
         } },
     ];
 
+    // [PATCH uBlock-mv3]
+    //
+    // The ImageData code path below rasterizes the toolbar icons through a
+    // canvas, which does not exist in a service worker. Always fall back to
+    // handing plain icon paths to browser.action.setIcon().
+    const canUseImageData = false;
+
     (( ) => {
         if ( browserAction.setIcon === undefined ) { return; }
 
@@ -790,7 +797,7 @@ if ( webext.browserAction instanceof Object ) {
         // Firefox uses an internal cache for each setIcon's paths:
         // https://searchfox.org/mozilla-central/rev/5ff2d7683078c96e4b11b8a13674daded935aa44/browser/components/extensions/parent/ext-browserAction.js#631
         //if ( vAPI.webextFlavor.soup.has('chromium') === false ) { return; }
-        return;
+        if ( canUseImageData === false ) { return; }
 
         const imgs = [];
         for ( let i = 0; i < icons.length; i++ ) {

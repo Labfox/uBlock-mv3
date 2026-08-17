@@ -19,8 +19,10 @@
     Home: https://github.com/gorhill/uBlock
 */
 
+import * as benchmarksModule from './benchmarks.js';
 import * as s14e from './s14e-serializer.js';
 import * as sfp from './static-filtering-parser.js';
+import * as staticDnrFilteringModule from './static-dnr-filtering.js';
 
 import {
     domainFromHostname,
@@ -55,8 +57,6 @@ import { staticFilteringReverseLookup } from './reverselookup.js';
 import staticNetFilteringEngine from './static-net-filtering.js';
 import webRequest from './traffic.js';
 import µb from './background.js';
-import * as benchmarksModule from "./benchmarks.js";
-import * as staticDnrFilteringModule from "./static-dnr-filtering.js";
 
 /******************************************************************************/
 
